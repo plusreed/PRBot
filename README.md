@@ -1,5 +1,5 @@
 # PRBot
-PRBot is a simple IRC bot written under PircBot.
+PRBot is a simple IRC bot written under Java with the PircBot base.
 
 ## Dependencies
 You will need [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) and [PircBot](http://www.jibble.org/pircbot.php/).
