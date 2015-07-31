@@ -51,19 +51,19 @@ public class MyBot extends PircBot {
 				break;
 				
 			case "about":
-		 		sendMessage(channel, sender + ": PRBot was made by reed and was coded in Java using Pircbot as a base.");
+		 		sendMessage(source, sender + ": PRBot was made by reed and was coded in Java using Pircbot as a base.");
 			 
 			 	break;
 			 	
 			case "source":
-				sendMessage(channel, sender + ": The source for PRBot is available at https://github.com/plusreed/PRBot");
+				sendMessage(source, sender + ": The source for PRBot is available at https://github.com/plusreed/PRBot");
 				
 				break;
 				
 			case "part":
 				if (!sender.equalsIgnoreCase("reed")) return;
 				
-		 		partChannel(channel, "User " + sender + " has asked me to part the channel.");
+		 		partChannel(source, "User " + sender + " has asked me to part the channel.");
 		 		
 		 		break;
 		 		
@@ -73,8 +73,8 @@ public class MyBot extends PircBot {
 			 	break;
 			 	
 			case "commands":
-			 	sendMessage(channel, sender + ": The available commands are time, testcolor, version, about, source, and pm. Make sure to prefix your command with a +!");
-		 		sendMessage(channel, sender + ": The available admin commands are part and shutdown. Only the developer (reed) can perform these commands at the moment.");
+			 	sendMessage(source, sender + ": The available commands are time, testcolor, version, about, source, and pm. Make sure to prefix your command with a +!");
+		 		sendMessage(source, sender + ": The available admin commands are part and shutdown. Only the developer (reed) can perform these commands at the moment.");
 		 		
 		 		break;
 		}
