@@ -1,45 +1,82 @@
 import org.jibble.pircbot.*;
+import java.util.*;
 
 public class MyBot extends PircBot {
+	String version = "v1.0 beta";
+	
 	// PRBot - an IRC bot based on PircBot
 	public MyBot() {
 		this.setName("PRBot");
+		this.setVersion(version);
 	}
 
-	public void onMessage(String channel, String sender,
-				String login, String hostname, String message) {
-		 if (message.equalsIgnoreCase("+time")) {
-			String time = new java.util.Date().toString();
-			sendMessage(channel, sender + ": The time is now: " + time);
+	public void onMessage(String channel, String sender, String login, String hostname, String message) {
+		 if (message.startsWith("+"))
+		 	parseCommand(channel, sender, login, hostname, message);
+	}
+	
+	public void parseCommand(String source, String sender, String login, String hostname, String message) {
+		String[] words = message.split(" ");
+		List<String> list = new ArrayList<String>();
+		for (String word : words)
+			list.add(word);
+			
+		String command = list.get(0).replace("+", "");
+		list.remove(0);
+		
+		switch (command) {
+			case "time":
+				String time = new java.util.Date().toString();
+				sendMessage(source, sender + ": The time is now: " + time);
+				
+				break;
+				
+			case "shutdown":
+				if (!sender.equalsIgnoreCase("reed")) return;
+				
+				// sendMessage(channel, sender + ": Shutting down now...");
+				quitServer("User " + sender + " sent shutdown command.");
+				System.exit(0);
+				
+				break;
+				
+			case "testcolor" :
+				sendMessage(source, sender + " Testing: " + Colors.RED + "Red text!");
+				
+				break;
+				
+			case "version":
+				sendMessage(source, version);
+				
+				break;
+				
+			case "about":
+		 		sendMessage(channel, sender + ": PRBot was made by reed and was coded in Java using Pircbot as a base.");
+			 
+			 	break;
+			 	
+			case "source":
+				sendMessage(channel, sender + ": The source for PRBot is available at https://github.com/plusreed/PRBot");
+				
+				break;
+				
+			case "part":
+				if (!sender.equalsIgnoreCase("reed")) return;
+				
+		 		partChannel(channel, "User " + sender + " has asked me to part the channel.");
+		 		
+		 		break;
+		 		
+		 	case "pm":
+			 	sendMessage(sender, "I'm PMing you! (this is a test command)");
+			 	
+			 	break;
+			 	
+			case "commands":
+			 	sendMessage(channel, sender + ": The available commands are time, testcolor, version, about, source, and pm. Make sure to prefix your command with a +!");
+		 		sendMessage(channel, sender + ": The available admin commands are part and shutdown. Only the developer (reed) can perform these commands at the moment.");
+		 		
+		 		break;
 		}
-		 if (message.equalsIgnoreCase("+shutdown") && sender.equalsIgnoreCase("reed")) {
-			// sendMessage(channel, sender + ": Shutting down now...");
-			quitServer("User " + sender + " sent shutdown command.");
-			System.exit(0);
-		}
-		 if (message.equalsIgnoreCase("+testcolor")) {
-			sendMessage(channel, sender + " Testing: " + Colors.RED + "Red text!");
-		}
-		 if (message.equalsIgnoreCase("+version")) {
-		 	sendMessage(channel, sender + ": v0.1 beta");
-		 }
-		 if (message.equalsIgnoreCase("+about")) {
-		 	sendMessage(channel, sender + ": PRBot was made by reed and was coded in Java using Pircbot as a base.");
-		 }
-		 if (message.equalsIgnoreCase("+source")) {
-		 	sendMessage(channel, sender + ": The source for PRBot will be available soon.");
-		 }
-		 if (message.equalsIgnoreCase("+part") && sender.equalsIgnoreCase("reed")) {
-		 	partChannel(channel, "User " + sender + " has asked me to part the channel.");
-		 	// this is here for debug purposes, UNCOMMENT ONLY WHEN TESTING
-		 	// quitServer("the debug function for +part is enabled, quitting server.");
-		 }
-		 if (message.equalsIgnoreCase("+pm")) {
-		 	sendMessage(sender, "I'm PMing you! (this is a test command)");
-		 }
-		 if (message.equalsIgnoreCase("+commands")) {
-		 	sendMessage(channel, sender + ": The available commands are time, testcolor, version, about, source, and pm. Make sure to prefix your command with a +!");
-		 	sendMessage(channel, sender + ": The available admin commands are part and shutdown. Only the developer (reed) can perform these commands at the moment.");
-		 }
 	}
 }
