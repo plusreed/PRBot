@@ -2,7 +2,7 @@ import org.jibble.pircbot.*;
 import java.util.*;
 
 public class MyBot extends PircBot {
-	String version = "v1.0 beta";
+	String version = "v1.0"; // change this at will
 	
 	// PRBot - an IRC bot based on PircBot
 	public MyBot() {
