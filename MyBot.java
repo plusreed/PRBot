@@ -3,7 +3,6 @@ import java.util.*;
 
 public class MyBot extends PircBot {
 	String version = "v1.0"; // change this at will
-	// asdfplaceholderasdf
 	
 	// PRBot - an IRC bot based on PircBot
 	public MyBot() {
