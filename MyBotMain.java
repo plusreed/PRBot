@@ -7,13 +7,13 @@ public class MyBotMain {
 		// start bot
 		MyBot bot = new MyBot();
 
-		// debugging
+		// debugging (keep this on for console output)
 		bot.setVerbose(true);
 
-		// connect to irc
+		// connect to irc (the address the bot will connect to)
 		bot.connect("irc.zandronum.com");
 
-		// join this channel
+		// join this channel (join this channel on the above IRC channel)
 		bot.joinChannel("#prtest");
 
 	}
