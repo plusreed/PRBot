@@ -2,7 +2,7 @@ import org.jibble.pircbot.*;
 import java.util.*;
 
 public class MyBot extends PircBot {
-	String version = "v1.0"; // change this at will
+	String version = "v1.0"; // change this at will, doesn't matter and SHOULDN'T break anything
 	
 	// PRBot - an IRC bot based on PircBot
 	public MyBot() {
@@ -32,8 +32,8 @@ public class MyBot extends PircBot {
 				break;
 				
 			case "shutdown":
-				if (!sender.equalsIgnoreCase("reed")) return;
-				
+				if (!sender.equalsIgnoreCase("reed")) return; // ADMIN COMMAND - CHANGE USERNAME HERE
+				// test code below, for anyone who is interested I guess
 				// sendMessage(channel, sender + ": Shutting down now...");
 				quitServer("User " + sender + " sent shutdown command.");
 				System.exit(0);
@@ -61,7 +61,7 @@ public class MyBot extends PircBot {
 				break;
 				
 			case "part":
-				if (!sender.equalsIgnoreCase("reed")) return;
+				if (!sender.equalsIgnoreCase("reed")) return; // ADMIN COMMAND - CHANGE USERNAME HERE
 				
 		 		partChannel(source, "User " + sender + " has asked me to part the channel.");
 		 		
