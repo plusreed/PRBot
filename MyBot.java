@@ -73,6 +73,7 @@ public class MyBot extends PircBot {
 			 	break;
 			 	
 			case "commands":
+				// TODO: find some better way to list these commands, probably don't list developer/debug commands to the channel
 			 	sendMessage(source, sender + ": The available commands are time, testcolor, version, about, source, and pm. Make sure to prefix your command with a +!");
 		 		sendMessage(source, sender + ": The available admin commands are part and shutdown. Only the developer (reed) can perform these commands at the moment.");
 		 		
