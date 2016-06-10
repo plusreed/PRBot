@@ -1,6 +1,7 @@
+**Rewriting this soon. I just sorta dropped this project due to school but I have more free time now.**
 # PRBot
 
-[![Join the chat at https://gitter.im/plusreed/PRBot](https://badges.gitter.im/plusreed/PRBot.svg)](https://gitter.im/plusreed/PRBot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/plusreed/PRBot](https://badges.gitter.im/plusreed/PRBot.svg)](https://gitter.im/plusreed/PRBot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) <br />
 PRBot is a simple IRC bot written under Java with the PircBot base.
 
 ## Don't understand how to use this?
